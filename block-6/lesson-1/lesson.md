@@ -1,5 +1,5 @@
 ---
-id:
+id: 3f2691a5-a4ac-4f2c-a999-9be499de1b5d
 title: "Основы очередей и RabbitMQ"
 estimated_minutes: 15
 ---

@@ -1,5 +1,5 @@
 ---
-id:
+id: 681f7705-f993-43f7-bec0-dd3041ec449b
 title: "Docker и контейнеризация"
 estimated_minutes: 15
 ---

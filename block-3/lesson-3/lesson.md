@@ -1,5 +1,5 @@
 ---
-id:
+id: 921f1d4a-a3d0-49ae-aa5b-3ebf4649056a
 title: "Моделирование и масштабирование"
 estimated_minutes: 18
 ---

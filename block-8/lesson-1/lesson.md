@@ -1,5 +1,5 @@
 ---
-id: ""
+id: 7537369c-ab94-489b-8c98-7111bf7f7ed3
 title: "Тестирование"
 estimated_minutes: 15
 ---

@@ -1,5 +1,5 @@
 ---
-id: ""
+id: c2d303de-98d0-4c52-8f23-36c9255039be
 title: "Go: основы языка и типы"
 estimated_minutes: 18
 ---

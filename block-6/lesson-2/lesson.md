@@ -1,5 +1,5 @@
 ---
-id:
+id: 035f5e25-5221-41a8-a45d-11e18bd235a6
 title: "Apache Kafka"
 estimated_minutes: 15
 ---

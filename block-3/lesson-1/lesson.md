@@ -1,5 +1,5 @@
 ---
-id:
+id: d9eaa9c2-c7bd-4085-bfaa-147fd6ffbc2f
 title: "Транзакции и ACID"
 estimated_minutes: 18
 ---

@@ -1,5 +1,5 @@
 ---
-id:
+id: 671df8c2-3e83-4a43-af5d-f29e99fc2300
 title: "Микросервисная архитектура"
 estimated_minutes: 18
 ---

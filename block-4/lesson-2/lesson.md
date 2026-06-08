@@ -1,5 +1,5 @@
 ---
-id:
+id: 09d64e64-9ca8-4061-9fcb-282518c5ed89
 title: "MongoDB и документные БД"
 estimated_minutes: 16
 ---

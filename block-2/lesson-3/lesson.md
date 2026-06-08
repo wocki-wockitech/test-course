@@ -1,5 +1,5 @@
 ---
-id: ""
+id: 67e55e8e-73d5-4f56-887d-a202d7a7f650
 title: "Go: рантайм и производительность"
 estimated_minutes: 18
 ---

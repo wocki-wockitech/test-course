@@ -1,5 +1,5 @@
 ---
-id:
+id: 3bb18741-a9ae-4198-9905-c3aeef9c692f
 title: "gRPC и Protobuf"
 estimated_minutes: 16
 ---

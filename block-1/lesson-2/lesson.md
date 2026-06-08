@@ -1,5 +1,5 @@
 ---
-id: ""
+id: 90dda8a8-66f2-424c-8edf-f8718a8e19f3
 title: "PHP: ООП, SOLID и паттерны"
 estimated_minutes: 15
 ---

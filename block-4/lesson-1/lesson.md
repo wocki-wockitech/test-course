@@ -1,5 +1,5 @@
 ---
-id:
+id: 9952b595-8eaf-4e85-b5b8-28e535453f1f
 title: "Redis и кеширование"
 estimated_minutes: 18
 ---

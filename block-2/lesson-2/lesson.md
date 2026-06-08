@@ -1,5 +1,5 @@
 ---
-id: ""
+id: 08ed985a-36fb-4a69-9437-22b8ed93e78e
 title: "Go: конкурентность"
 estimated_minutes: 20
 ---

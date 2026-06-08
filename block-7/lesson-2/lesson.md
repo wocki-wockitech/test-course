@@ -1,5 +1,5 @@
 ---
-id:
+id: 1f4feccd-05d4-44ba-98cf-e0bd315c067d
 title: "Kubernetes"
 estimated_minutes: 15
 ---

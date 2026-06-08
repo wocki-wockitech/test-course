@@ -1,5 +1,5 @@
 ---
-id:
+id: 55ac6b57-40e8-4d97-b900-236021bbd4cc
 title: "Индексы и оптимизация запросов"
 estimated_minutes: 18
 ---
