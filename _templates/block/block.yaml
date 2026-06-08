@@ -1,0 +1,18 @@
+# Copy this folder to the course root and rename to your slug.
+# Example: cp -r _templates/block/ my-block/
+
+id:                                         # auto-filled
+title: "Block title"
+description: "Short description (1-2 sentences) shown in the course outline."
+
+# Order of lessons. Slug = folder name within this block.
+# Add lesson folders next to this file and list them here.
+lessons:
+  - lesson-1
+  # - lesson-2
+
+# Final test settings for this block
+test:
+  question_count: 10
+  pass_threshold: 0.7
+  prefer_failed: true

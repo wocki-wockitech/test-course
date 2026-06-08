@@ -1,0 +1,30 @@
+id:
+title: "Resolve a merge conflict"
+description: |
+  You'll be given a repository with a merge conflict on the `main` branch.
+  Resolve the conflict, commit the result, and the checker will verify
+  the file contents and a clean working tree.
+
+# Runner: studyme/git-runner (bash sandbox with git installed)
+type: git_interactive
+
+# Longer timeout — interactive tasks take time
+timeout_sec: 300
+
+limits:
+  memory_mb: 512
+  cpu_cores: 1
+  # Network is allowed for git_interactive (e.g. clone from a fixture remote)
+  network: true
+
+files:
+  # Prepares the workspace before the student starts
+  setup:    setup.sh
+  # Validates the student's work — exit 0 = pass, non-zero = fail
+  check:    check.sh
+  # Step-by-step solution shown after N attempts (markdown)
+  solution: solution.md
+
+hints:
+  - "Open the conflicting file and look for `<<<<<<< HEAD` markers."
+  - "After editing, `git add` the file and `git commit`."

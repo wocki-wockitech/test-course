@@ -1,0 +1,32 @@
+id:
+title: "Find users older than 18"
+description: |
+  Write a SELECT query that returns all rows from `users`
+  where `age > 18`, ordered by `name` ascending.
+
+# Runner: studyme/sql-runner (PostgreSQL 16)
+language: sql
+
+timeout_sec: 10
+
+limits:
+  memory_mb: 256
+
+files:
+  # Schema and seed data (loaded into a fresh DB before each run)
+  setup: setup.sql
+  # Student writes their query here
+  template: solution.sql
+  # Reference query — its output is compared to the student's
+  solution: solution/solution.sql
+
+# How to compare student output to reference output
+comparison:
+  # exact_rows  — row order matters, exact match
+  # set_match   — order doesn't matter, multiset comparison
+  # column_subset — student must return at least these columns
+  mode: exact_rows
+
+hints:
+  - "Use `WHERE age > 18`."
+  - "Add `ORDER BY name ASC` to sort."

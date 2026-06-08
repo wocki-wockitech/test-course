@@ -1,0 +1,13 @@
+{
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative",
+  "alwaysUpdateLinks": true,
+  "showFrontmatter": true,
+  "attachmentFolderPath": "./assets",
+  "userIgnoreFilters": [
+    "_templates/",
+    "_drafts/",
+    ".github/",
+    "docs/"
+  ]
+}

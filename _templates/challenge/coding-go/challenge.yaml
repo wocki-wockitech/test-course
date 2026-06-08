@@ -1,0 +1,27 @@
+id:
+title: "Implement Sum"
+description: |
+  Implement a function `Sum(a, b int) int` that returns the sum of two integers.
+
+# Runner: studyme/go-runner
+language: go
+
+# Hard timeout for `go test` execution (seconds)
+timeout_sec: 20
+
+# Resource limits (optional, overrides platform defaults)
+limits:
+  memory_mb: 256
+  cpu_cores: 1
+
+# Files relative to this challenge folder.
+# All paths are MinIO-relative once indexed.
+files:
+  template: solution.go                     # student starting point
+  tests:    solution_test.go                # author's tests, hidden from student
+  solution: solution/solution.go            # reference solution, hidden from student
+
+# Hints shown to the student on demand (optional)
+hints:
+  - "Remember Go uses `+` for integer addition."
+  - "Function signature: `func Sum(a, b int) int`."

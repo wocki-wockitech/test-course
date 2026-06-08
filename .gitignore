@@ -1,0 +1,30 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*~
+
+# Obsidian — uncomment if you want to keep your personal vault settings local.
+# By default we commit a minimal .obsidian/ folder so the team shares
+# StudyMe-specific Obsidian config (templates, plugin settings).
+# .obsidian/
+
+# But always ignore Obsidian's per-machine state:
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+
+# Local drafts (any folder starting with _ is ignored by the platform too)
+_drafts/
+_local/
+
+# CLI cache
+.studyme-cache/
+
+# Local environment
+.env
+.env.local

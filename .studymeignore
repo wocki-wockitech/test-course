@@ -1,0 +1,9 @@
+# Paths the StudyMe platform will skip during indexing.
+# gitignore-style syntax.
+#
+# Folders starting with _ or . are ignored automatically — no need to list them.
+
+# Examples:
+# drafts/
+# old-version-2024/
+# experiments/**

@@ -1,0 +1,15 @@
+# Ordering question example — students arrange items in correct order.
+# The correct order is the order listed in this file.
+id: ""  # auto-filled by studyme-action fix-ids
+difficulty: 2
+tags: [example]
+
+variants:
+  - type: ordering
+    text: "In what order do you set up a new course?"
+    items:
+      - "Create a GitHub repository"
+      - "Add course.yaml"
+      - "Create a block folder"
+      - "Write lesson.md"
+      - "Push and create a tag"

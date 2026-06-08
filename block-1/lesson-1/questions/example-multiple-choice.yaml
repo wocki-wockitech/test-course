@@ -1,0 +1,19 @@
+# Multiple choice question with variants (multiple formulations of same concept).
+id: ""  # auto-filled by studyme-action fix-ids
+difficulty: 1
+tags: [example]
+
+variants:
+  - type: multiple_choice
+    text: "What file defines the course structure?"
+    options:
+      - text: "course.yaml"
+        correct: true
+        feedback: "Correct! course.yaml is the top-level manifest."
+      - text: "package.json"
+        feedback: "No, that's for Node.js projects."
+      - text: "Makefile"
+
+  - type: true_false
+    text: "course.yaml is the top-level manifest of a StudyMe course."
+    correct: true

@@ -1,0 +1,17 @@
+# Matching question example — students connect pairs.
+id: ""  # auto-filled by studyme-action fix-ids
+difficulty: 2
+tags: [example]
+
+variants:
+  - type: matching
+    text: "Match each file to its purpose:"
+    pairs:
+      - left: "course.yaml"
+        right: "Course manifest"
+      - left: "block.yaml"
+        right: "Block configuration"
+      - left: "lesson.md"
+        right: "Lesson content"
+    distractors:
+      - "CI pipeline config"

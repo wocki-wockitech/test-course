@@ -1,0 +1,25 @@
+id:
+title: "Implement Sum"
+description: |
+  Implement a function `sumTwo(a, b)` that returns the sum of two numbers.
+
+# Runner: studyme/js-runner (uses vitest)
+language: javascript
+
+timeout_sec: 20
+
+limits:
+  memory_mb: 256
+  cpu_cores: 1
+
+files:
+  template: solution.js
+  tests:    solution.test.js
+  solution: solution/solution.js
+
+# Optional: npm dependencies (installed before tests run)
+# dependencies:
+#   lodash: "^4.17.21"
+
+hints:
+  - "Use the `+` operator."

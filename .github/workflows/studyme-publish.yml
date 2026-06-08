@@ -1,0 +1,36 @@
+# Notifies StudyMe about a new published version.
+# Triggered when a tag matching the configured pattern is pushed.
+#
+# Note: this workflow is OPTIONAL. The platform receives push-tag events
+# via GitHub App webhook automatically. Use this workflow only if your
+# repo isn't connected via the GitHub App (e.g. self-hosted runner setup
+# or you want explicit control).
+
+name: StudyMe — Publish version
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Notify StudyMe
+        env:
+          STUDYME_TOKEN: ${{ secrets.STUDYME_TOKEN }}
+          STUDYME_API:   ${{ vars.STUDYME_API || 'https://api.studyme.wockitech.local' }}
+        run: |
+          curl -fsSL -X POST "$STUDYME_API/api/v1/courses/sync" \
+            -H "Authorization: Bearer $STUDYME_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "$(jq -n \
+                  --arg repo "${{ github.repository }}" \
+                  --arg tag "${{ github.ref_name }}" \
+                  --arg sha "${{ github.sha }}" \
+                  '{repository: $repo, tag: $tag, commit_sha: $sha}')"

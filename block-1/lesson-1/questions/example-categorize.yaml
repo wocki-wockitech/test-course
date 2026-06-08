@@ -1,0 +1,17 @@
+# Categorize question example — students distribute items into groups.
+id: ""  # auto-filled by studyme-action fix-ids
+difficulty: 3
+tags: [example]
+
+variants:
+  - type: categorize
+    text: "Categorize each file by where it belongs:"
+    categories:
+      - name: "Course root"
+        items: ["course.yaml", "README.md"]
+      - name: "Block folder"
+        items: ["block.yaml"]
+      - name: "Lesson folder"
+        items: ["lesson.md", "questions.yaml"]
+    distractors:
+      - "Dockerfile"

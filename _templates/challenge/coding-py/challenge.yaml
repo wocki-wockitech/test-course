@@ -1,0 +1,26 @@
+id:
+title: "Implement Sum"
+description: |
+  Implement a function `sum_two(a, b)` that returns the sum of two numbers.
+
+# Runner: studyme/python-runner (uses pytest)
+language: python
+
+timeout_sec: 20
+
+limits:
+  memory_mb: 256
+  cpu_cores: 1
+
+files:
+  template: solution.py
+  tests:    test_solution.py
+  solution: solution/solution.py
+
+# Optional: pip dependencies (installed before tests run)
+# dependencies:
+#   - "requests==2.32.0"
+
+hints:
+  - "Use the `+` operator."
+  - "Don't worry about types — Python handles int and float the same way."
