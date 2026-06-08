@@ -1,0 +1,29 @@
+id: ""
+difficulty: 3
+tags: [docker, dockerfile, cmd, entrypoint]
+
+variants:
+  - type: multiple_choice
+    text: "В чём разница между `CMD` и `ENTRYPOINT`?"
+    options:
+      - text: "ENTRYPOINT задаёт фиксированную точку входа, CMD — аргументы по умолчанию, которые легко переопределить в docker run"
+        correct: true
+        feedback: "Верно. Частый паттерн: ENTRYPOINT — бинарь, CMD — аргументы к нему."
+      - text: "Это полные синонимы"
+        feedback: "Нет, поведение при переопределении в docker run разное."
+      - text: "CMD выполняется на этапе сборки, ENTRYPOINT — при запуске"
+        feedback: "Нет, обе выполняются при запуске контейнера."
+      - text: "ENTRYPOINT можно указать только один раз за всю историю образов"
+        feedback: "Нет такого ограничения; речь о семантике запуска."
+    reference_answer: >
+      ENTRYPOINT — фиксированная точка входа; аргументы из docker run
+      добавляются к ней. CMD — значения по умолчанию, которые полностью
+      заменяются, если в docker run передать свою команду.
+
+  - type: true_false
+    text: "Команда `docker run image bash` переопределяет CMD, но не переопределяет ENTRYPOINT (если он задан в exec-форме)."
+    correct: true
+    reference_answer: >
+      Да. Аргументы docker run заменяют CMD и становятся аргументами к
+      ENTRYPOINT. Чтобы заменить сам ENTRYPOINT, используют флаг
+      --entrypoint.

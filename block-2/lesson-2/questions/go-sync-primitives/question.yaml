@@ -1,0 +1,38 @@
+id: ""
+difficulty: 3
+tags: [go, sync, mutex, waitgroup]
+
+variants:
+  - type: multiple_choice
+    text: "Когда RWMutex предпочтительнее обычного Mutex?"
+    options:
+      - text: "Когда читателей много, а записей мало: RLock пускает много читателей параллельно"
+        correct: true
+        feedback: "Верно. RWMutex даёт конкурентное чтение и эксклюзивную запись."
+      - text: "Всегда — RWMutex быстрее во всех случаях"
+        feedback: "Нет. При частых записях накладные расходы RWMutex могут проигрывать Mutex."
+      - text: "Когда нужно защитить только одну переменную"
+        feedback: "Число переменных не критерий; критерий — соотношение чтений и записей."
+      - text: "Только для атомарных счётчиков"
+        feedback: "Для счётчиков обычно берут sync/atomic, а не RWMutex."
+    reference_answer: >
+      RWMutex выгоден при паттерне «часто читают, редко пишут»: RLock
+      позволяет множеству читателей работать одновременно, а Lock даёт
+      эксклюзивный доступ писателю.
+
+  - type: multiple_choice
+    text: "Как правильно использовать sync.WaitGroup?"
+    options:
+      - text: "wg.Add(n) до запуска горутин, defer wg.Done() внутри, wg.Wait() для ожидания"
+        correct: true
+        feedback: "Верно. Add вызывают до go, Done через defer, затем Wait."
+      - text: "wg.Add вызывать внутри каждой горутины"
+        feedback: "Опасно: Wait может проскочить раньше, чем горутина успеет вызвать Add."
+      - text: "wg.Done() вызывать в main после Wait"
+        feedback: "Done вызывает сама горутина по завершении, а не main."
+      - text: "WaitGroup нужно создавать через make"
+        feedback: "WaitGroup — структура, её zero value готов к использованию."
+    reference_answer: >
+      Add(n) вызывают до старта горутин (иначе Wait может не дождаться),
+      внутри горутины первой строкой ставят defer wg.Done(), а основной код
+      блокируется на wg.Wait() до обнуления счётчика.

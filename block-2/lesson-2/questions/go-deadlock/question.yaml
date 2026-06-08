@@ -1,0 +1,30 @@
+id: ""
+difficulty: 3
+tags: [go, channels, deadlock, concurrency]
+
+variants:
+  - type: multiple_choice
+    text: "Что произойдёт при запуске кода в файле?"
+    file: main.go
+    options:
+      - text: "fatal error: all goroutines are asleep - deadlock!"
+        correct: true
+        feedback: "Верно. Отправка в небуферизованный канал блокирует main, а читателя нет — рантайм детектит deadlock."
+      - text: "Выведет 42"
+        feedback: "Нет. main блокируется на `ch <- 42`, до чтения дело не дойдёт."
+      - text: "Выведет 0"
+        feedback: "Нет, до Println выполнение не дойдёт — будет deadlock на отправке."
+      - text: "Программа зависнет навсегда без вывода"
+        feedback: "Рантайм Go обнаружит, что все горутины спят, и аварийно завершится с ошибкой deadlock."
+    reference_answer: >
+      Канал небуферизованный, поэтому `ch <- 42` блокирует main до тех пор,
+      пока кто-то не прочитает. Но единственная горутина — это сама main, она
+      заблокирована. Рантайм видит, что все горутины спят, и падает с
+      fatal error: all goroutines are asleep - deadlock!
+
+  - type: true_false
+    text: "Отправка в небуферизованный канал блокируется, пока другая горутина не выполнит приём."
+    correct: true
+    reference_answer: >
+      Небуферизованный канал синхронный (рандеву): отправитель ждёт
+      получателя. Без читателя в другой горутине это приводит к deadlock.

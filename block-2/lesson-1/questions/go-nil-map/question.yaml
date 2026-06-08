@@ -1,0 +1,29 @@
+id: ""
+difficulty: 2
+tags: [go, map, nil, panic]
+
+variants:
+  - type: multiple_choice
+    text: "Что произойдёт при запуске кода в файле?"
+    file: main.go
+    options:
+      - text: "panic: assignment to entry in nil map на строке записи"
+        correct: true
+        feedback: "Верно. Чтение из nil map даёт 0, но запись в nil map вызывает панику."
+      - text: "Выведет `0` и `1`, ошибок нет"
+        feedback: "Нет. Запись в неинициализированную (nil) map паникует."
+      - text: "Ошибка компиляции: нельзя читать из nil map"
+        feedback: "Чтение из nil map как раз допустимо и возвращает zero value."
+      - text: "Выведет `0` и `0`"
+        feedback: "До второго вывода дело не дойдёт — будет panic на записи."
+    reference_answer: >
+      Переменная объявлена как `var counts map[string]int` — это nil map.
+      Чтение возвращает zero value (0), но запись `counts["a"] = 1` вызывает
+      panic: assignment to entry in nil map. Нужно создавать через make.
+
+  - type: true_false
+    text: "Чтение значения из nil map в Go вызывает панику."
+    correct: false
+    reference_answer: >
+      Чтение из nil map безопасно и возвращает zero value типа. Паникует
+      только запись в nil map.

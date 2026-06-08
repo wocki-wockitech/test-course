@@ -1,0 +1,28 @@
+id: ""
+difficulty: 3
+tags: [rest, rpc, api, openapi]
+
+variants:
+  - type: multiple_choice
+    text: "Чем REST отличается от RPC по способу мышления?"
+    options:
+      - text: "REST оперирует ресурсами и стандартными HTTP-методами, RPC — вызовами процедур (действиями)"
+        correct: true
+        feedback: "Верно. REST: /users/42 + метод; RPC: createUser, chargeCard."
+      - text: "REST всегда быстрее RPC"
+        feedback: "Скорость зависит от транспорта/сериализации, а не от стиля как такового."
+      - text: "RPC не может работать поверх HTTP"
+        feedback: "Может: gRPC — это RPC поверх HTTP/2."
+      - text: "REST не использует JSON"
+        feedback: "REST как раз чаще всего отдаёт JSON."
+    reference_answer: >
+      REST мыслит ресурсами (URI) и стандартными методами. RPC мыслит
+      действиями — вызовами именованных процедур. gRPC — пример RPC поверх
+      HTTP/2.
+
+  - type: true_false
+    text: "OpenAPI/Swagger описывает контракт REST API в машиночитаемом виде и позволяет генерировать документацию и клиентов."
+    correct: true
+    reference_answer: >
+      OpenAPI — стандарт описания путей, методов и схем. Swagger UI рендерит
+      документацию, а из спецификации можно генерировать клиентов и заготовки.

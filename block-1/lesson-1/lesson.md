@@ -1,76 +1,150 @@
 ---
-# Stable UUID — generated automatically. Do NOT change.
 id: 038bf4ed-abc5-457d-a038-4af960648049
-title: "First Lesson"
-# Optional: estimated reading time in minutes
-estimated_minutes: 5
+title: "PHP: язык и рантайм"
+estimated_minutes: 15
 ---
 
-# First Lesson
+# PHP: язык и рантайм
 
-This is the first lesson of your course. Replace the content below with your own.
+Цель урока — за 15 минут закрыть базу про PHP, которую почти всегда спрашивают:
+как устроено выполнение, чем отличаются версии 7.4/8, типы, ссылки, OPcache и
+типичные грабли. Простым языком, с прицелом на устные ответы.
 
-## What you'll learn
+## Как PHP вообще выполняется
 
-- Concept one
-- Concept two
-- Concept three
+PHP — интерпретируемый язык, но не «строка за строкой». На каждый запрос
+происходит:
 
-## Main content
+1. **Лексинг + парсинг** исходника в AST.
+2. **Компиляция** AST в opcodes (байткод движка Zend).
+3. **Исполнение** opcodes виртуальной машиной Zend VM.
 
-Write your lesson content here using regular Markdown. Code blocks, lists,
-images and links are all supported automatically.
+Без кеша шаги 1-2 повторяются на каждый запрос. **OPcache** хранит уже
+скомпилированные opcodes в разделяемой памяти, поэтому компиляция происходит
+один раз — это даёт основной прирост производительности на проде.
 
-```python
-def hello(name: str) -> str:
-    return f"Hello, {name}!"
-```
+> [!tip] Что сказать на собесе
+> «PHP компилируется в opcodes движком Zend и исполняется Zend VM. OPcache
+> кеширует opcodes в shared memory, чтобы не перекомпилировать на каждый
+> запрос.»
 
-### Callouts (Obsidian native syntax)
+## Модель «shared-nothing»
 
-> [!info] Information
-> Useful for tips and clarifications. The full set of Obsidian callout
-> types is supported: note, info, tip, warning, danger, success, question,
-> example, quote, todo, and more.
+Ключевая особенность PHP: на каждый HTTP-запрос — **свежее состояние**. После
+ответа вся память запроса очищается. Между запросами по умолчанию ничего не
+шарится (отсюда «shared-nothing»).
 
-> [!warning] Be careful
-> Use warnings for things students should pay attention to.
+Плюсы: простота, нет утечек между запросами, легко масштабировать
+горизонтально. Минусы: нельзя держать «горячее» состояние в памяти процесса —
+для этого нужен внешний стор (Redis, БД).
 
-> [!hint]- Click to expand
-> The minus after the type makes the callout collapsed by default.
-> Use `+` for expanded foldable callouts.
+## PHP-FPM: как обслуживаются запросы
 
-### Diagrams
+На проде PHP обычно работает через **PHP-FPM** (FastCGI Process Manager).
+Nginx принимает HTTP и проксирует в пул FPM-воркеров по протоколу FastCGI.
+FPM держит пул процессов; каждый воркер обрабатывает один запрос за раз.
 
-Mermaid diagrams use the standard fenced code block:
+Параметры пула (`pm = dynamic/static/ondemand`, `pm.max_children`) определяют,
+сколько одновременных запросов вы потянете. Слишком много воркеров — упрётесь в
+память; слишком мало — запросы встанут в очередь.
 
 ```mermaid
 graph LR
-    A[Browser] -->|HTTP request| B[Server]
-    B -->|HTTP response| A
+    C[Клиент] -->|HTTP| N[Nginx]
+    N -->|FastCGI| F[PHP-FPM пул]
+    F --> W1[worker 1]
+    F --> W2[worker 2]
+    F --> W3[worker N]
 ```
 
-### Wiki-links and embeds
+## Типы и сравнения
 
-You can link to other lessons in the course using Obsidian wiki-link
-syntax (or standard markdown links — both work):
+PHP — динамически типизированный, но с опциональной строгой типизацией.
 
-- `[[../block-2/lesson-1]]` — link to another lesson
-- `[[../block-2/lesson-1|see the next chapter]]` — with custom label
-- `![[../assets/diagram.png]]` — embed an image
+- `==` — нестрогое сравнение (с приведением типов).
+- `===` — строгое (тип + значение). **На собесе всегда говори, что по умолчанию
+  используешь `===`.**
+- `declare(strict_types=1);` — включает строгий режим типов для скаляров в
+  файле: PHP не будет молча кастовать `int` в `string` и наоборот.
 
-## Try it yourself
+В PHP 8 «магические» сравнения стали адекватнее: `0 == "foo"` теперь `false`
+(в PHP 7 было `true`, потому что строка кастовалась в `0`).
 
-Embed an inline quiz that pulls a question from `questions.yaml`:
+## Что нового в PHP 8 (частый вопрос)
 
-> [!quiz] example-question
+- **JIT** — компиляция части opcodes в машинный код. Заметно помогает на
+  CPU-bound задачах, но для типичного web-IO выигрыш небольшой.
+- **Именованные аргументы**: `foo(limit: 10)`.
+- **Конструктор property promotion**: поля объявляются прямо в конструкторе.
+- **Union types**: `int|string`.
+- **`match`** — выражение, строгое сравнение, возвращает значение.
+- **Nullsafe**: `$user?->getAddress()?->city`.
+- **Атрибуты** (`#[Route(...)]`) вместо аннотаций в докблоках.
+- **Enum** (с 8.1), **readonly**-свойства (8.1/8.2), **fibers** (8.1).
 
-## Coding challenge
+```php
+// property promotion + union types + readonly (PHP 8.1)
+class Money
+{
+    public function __construct(
+        public readonly int $amount,
+        public readonly string $currency = 'RUB',
+    ) {}
+}
+```
 
-Reference a coding challenge defined in `challenges/`:
+## Ссылки, копирование и copy-on-write
 
-<!-- > [!challenge] example-challenge -->
+PHP передаёт переменные **по значению**, но реально копия создаётся лениво —
+**copy-on-write**: пока вы только читаете, обе переменные указывают на одни
+данные; копия делается в момент записи.
 
-## Summary
+Объекты ведут себя иначе: переменная хранит **хэндл объекта**. При передаче
+объекта копируется хэндл, а не объект, поэтому изменения внутри функции видны
+снаружи (но это не то же самое, что передача по ссылке `&`).
 
-Wrap up the key takeaways from this lesson.
+> [!warning] Грабли
+> `$a = $b` для объекта не клонирует объект. Чтобы получить копию, нужен
+> `clone` (и при необходимости `__clone()` для глубокого копирования).
+
+## Управление памятью
+
+- Подсчёт ссылок (reference counting) + сборщик циклических ссылок.
+- `unset()` уменьшает счётчик ссылок; память освобождается, когда счётчик ноль.
+- В конце запроса вся память запроса освобождается целиком (shared-nothing).
+
+## Обработка ошибок
+
+- В PHP 7+ почти всё — это исключения. `Error` и `Exception` имеют общий
+  интерфейс `Throwable`.
+- Ловить можно `catch (\Throwable $e)`, но обычно ловят конкретику.
+- Фатальные ошибки типа `TypeError`, `DivisionByZeroError` — это `Error`.
+
+```php
+try {
+    risky();
+} catch (\RuntimeException $e) {
+    // конкретный случай
+} catch (\Throwable $e) {
+    // всё остальное, включая Error
+}
+```
+
+## Практика
+
+Проверь себя — это типовые вопросы с собеса:
+
+> [!quiz] php-equality
+> [!quiz] php-opcache
+> [!quiz] php-shared-nothing
+> [!quiz] php-pdo
+> [!quiz] php8-features
+
+## Итог
+
+- PHP компилируется в opcodes, исполняется Zend VM, OPcache кеширует компиляцию.
+- Shared-nothing: на каждый запрос свежее состояние, горячее состояние держим
+  во внешнем сторе.
+- На проде — Nginx + PHP-FPM пул воркеров.
+- Всегда `===` и `declare(strict_types=1)`.
+- PHP 8: JIT, enum, readonly, match, named args, property promotion, attributes.

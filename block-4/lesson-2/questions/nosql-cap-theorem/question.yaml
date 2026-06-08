@@ -1,0 +1,38 @@
+id: ""
+difficulty: 4
+tags: [cap, distributed-systems, consistency, nosql]
+
+variants:
+  - type: multiple_choice
+    text: "Что утверждает CAP-теорема для распределённых систем?"
+    options:
+      - text: "Из Consistency, Availability и Partition tolerance одновременно можно гарантировать только два"
+        correct: true
+        feedback: "Верно. И поскольку P обязателен, реальный выбор — CP или AP."
+      - text: "Можно гарантировать все три свойства одновременно при хорошей сети"
+        feedback: "Нет, это и есть то, что CAP запрещает."
+      - text: "Consistency и Availability невозможны вместе никогда, даже без разрывов"
+        feedback: "Конфликт возникает именно при сетевом разрыве (P), а не всегда."
+      - text: "Речь идёт о Cache, API и Persistence"
+        feedback: "Нет, CAP — это Consistency, Availability, Partition tolerance."
+    reference_answer: >
+      CAP: из трёх свойств (Consistency, Availability, Partition tolerance)
+      одновременно достижимы только два. В распределённой системе сетевые
+      разрывы неизбежны, поэтому P обязателен, и выбор сводится к CP или AP.
+
+  - type: matching
+    text: "Сопоставь букву CAP с её смыслом:"
+    pairs:
+      - left: "Consistency"
+        right: "Все узлы видят одни и те же актуальные данные"
+      - left: "Availability"
+        right: "Система всегда отвечает, не отдаёт ошибку"
+      - left: "Partition tolerance"
+        right: "Система работает при разрыве сети между узлами"
+
+  - type: true_false
+    text: "Поскольку сетевые разрывы в распределённой системе неизбежны, реальный выбор по CAP — между CP и AP."
+    correct: true
+    reference_answer: >
+      Да. P практически обязателен, поэтому при разрыве система жертвует либо
+      доступностью (CP), либо консистентностью (AP, eventual consistency).

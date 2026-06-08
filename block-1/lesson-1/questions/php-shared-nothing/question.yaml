@@ -1,0 +1,37 @@
+id: ""
+difficulty: 3
+tags: [php, architecture, fpm, runtime]
+
+variants:
+  - type: multiple_choice
+    text: "Что означает модель «shared-nothing» в PHP?"
+    options:
+      - text: "На каждый запрос — свежее состояние, между запросами память не шарится"
+        correct: true
+        feedback: "Верно. После ответа память запроса очищается."
+      - text: "PHP не может работать в нескольких процессах"
+        feedback: "Наоборот, FPM держит пул процессов."
+      - text: "Все запросы используют одну общую переменную окружения"
+        feedback: "Нет, это противоположность shared-nothing."
+      - text: "Кеш недоступен в PHP"
+        feedback: "Кеш доступен, но через внешний стор."
+    reference_answer: >
+      Каждый запрос исполняется с чистого листа, состояние не переживает запрос.
+      Горячее состояние держат во внешнем сторе (Redis, БД).
+
+  - type: multiple_choice
+    text: "Как на проде Nginx обычно отдаёт запрос в PHP?"
+    options:
+      - text: "Проксирует в пул PHP-FPM воркеров по протоколу FastCGI"
+        correct: true
+        feedback: "Да. Nginx + PHP-FPM по FastCGI — стандартная связка."
+      - text: "Запускает новый процесс PHP CLI на каждый запрос"
+        feedback: "Это медленно и на проде так не делают."
+      - text: "Выполняет PHP внутри самого Nginx"
+        feedback: "Nginx не исполняет PHP сам."
+      - text: "Через WebSocket"
+        feedback: "FastCGI, а не WebSocket."
+
+  - type: true_false
+    text: "В shared-nothing модели нельзя надёжно держать горячий кеш в памяти самого PHP-процесса между запросами."
+    correct: true
