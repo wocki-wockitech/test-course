@@ -1,0 +1,20 @@
+# StudyMe block manifest
+# https://docs.studyme.wockitech.local/format/block
+
+# Stable UUID — generated automatically. Do NOT change.
+id: 9d061569-aee3-487b-a22f-03dbf46cbd0b
+
+# Display
+title: "NoSQL и кеширование: Redis, MongoDB"
+description: "Redis как in-memory стор и кеш: структуры данных, TTL, персистентность, паттерны и инвалидация кеша. MongoDB и документные БД, CAP, репликасеты, шардирование. База для собеса на бэкенд."
+
+# Lesson order. Slug = folder name.
+lessons:
+  - lesson-1
+  - lesson-2
+
+# Block test (final exam at the end of the block)
+test:
+  question_count: 10
+  pass_threshold: 0.7
+  prefer_failed: true

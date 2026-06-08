@@ -1,0 +1,20 @@
+# StudyMe block manifest
+# https://docs.studyme.wockitech.local/format/block
+
+# Stable UUID — generated automatically. Do NOT change.
+id: bd9f8b04-3be1-4e03-a3f9-54c74b7cd91e
+
+# Display
+title: "Docker и Kubernetes"
+description: "Контейнеризация и оркестрация для бэкенда: образы и слои, Dockerfile, multi-stage, best practices, объекты Kubernetes, Service, probes, масштабирование. База для собеса на Senior/Middle+."
+
+# Lesson order. Slug = folder name.
+lessons:
+  - lesson-1
+  - lesson-2
+
+# Block test (final exam at the end of the block)
+test:
+  question_count: 10
+  pass_threshold: 0.7
+  prefer_failed: true

@@ -1,0 +1,20 @@
+# StudyMe block manifest
+# https://docs.studyme.wockitech.local/format/block
+
+# Stable UUID — generated automatically. Do NOT change.
+id: cc73ecfa-3f0f-4cab-a9f9-e080705456bc
+
+# Display
+title: "Тестирование, рефакторинг и процессы"
+description: "Пирамида тестов, моки/стабы, TDD, табличные тесты в Go, рефакторинг legacy, code review, Agile/Scrum и оптимизация производительности. Финальный блок под собес."
+
+# Lesson order. Slug = folder name.
+lessons:
+  - lesson-1
+  - lesson-2
+
+# Block test (final exam at the end of the block)
+test:
+  question_count: 10
+  pass_threshold: 0.7
+  prefer_failed: true

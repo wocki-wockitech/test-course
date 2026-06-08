@@ -1,0 +1,32 @@
+id: ""
+difficulty: 3
+tags: [kubernetes, service, networking]
+
+variants:
+  - type: categorize
+    text: "Раздели типы Service и связанные сущности по уровню доступа:"
+    categories:
+      - name: "Только внутри кластера"
+        items: ["ClusterIP"]
+      - name: "Доступ снаружи кластера"
+        items: ["NodePort", "LoadBalancer", "Ingress"]
+    distractors:
+      - "ConfigMap"
+      - "ReplicaSet"
+
+  - type: multiple_choice
+    text: "Какой тип Service используется по умолчанию и доступен только внутри кластера?"
+    options:
+      - text: "ClusterIP"
+        correct: true
+        feedback: "Верно. ClusterIP — дефолт, виртуальный IP для общения сервисов внутри кластера."
+      - text: "NodePort"
+        feedback: "NodePort открывает порт на нодах для внешнего доступа."
+      - text: "LoadBalancer"
+        feedback: "LoadBalancer заказывает внешний балансировщик у облака."
+      - text: "Ingress"
+        feedback: "Ingress — это не тип Service, а отдельный объект маршрутизации HTTP."
+    reference_answer: >
+      По умолчанию Service имеет тип ClusterIP — виртуальный IP, доступный
+      только внутри кластера. NodePort и LoadBalancer открывают доступ
+      снаружи, а HTTP снаружи чаще публикуют через Ingress.

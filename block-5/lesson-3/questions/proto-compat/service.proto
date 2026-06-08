@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package billing.v1;
+
+// Исходная версия сообщения (уже в проде, используется старыми клиентами)
+message Invoice {
+  int64 id = 1;
+  string customer_email = 2;
+  int64 amount_cents = 3;
+}
+
+// --- Кандидаты изменений для новой версии ---
+
+// Вариант A: добавили новое поле с НОВЫМ номером
+message InvoiceA {
+  int64 id = 1;
+  string customer_email = 2;
+  int64 amount_cents = 3;
+  string currency = 4; // новое поле
+}
+
+// Вариант B: удалили customer_email и переиспользовали номер 2 под новое поле
+message InvoiceB {
+  int64 id = 1;
+  int64 amount_cents = 3;
+  string note = 2; // ПЕРЕИСПОЛЬЗОВАЛИ номер 2!
+}
+
+// Вариант C: поменяли номер существующему полю
+message InvoiceC {
+  int64 id = 1;
+  string customer_email = 5; // был 2, стал 5
+  int64 amount_cents = 3;
+}

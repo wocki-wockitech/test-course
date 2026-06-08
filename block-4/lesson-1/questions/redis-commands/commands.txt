@@ -1,0 +1,16 @@
+# Сессия redis-cli. Команды выполняются сверху вниз.
+
+SET counter 10
+INCR counter
+INCRBY counter 5
+GET counter
+
+RPUSH queue a b c
+LPUSH queue x
+LRANGE queue 0 -1
+
+SADD tags redis cache redis
+SCARD tags
+
+SET temp "hello" EX 100
+TTL temp

@@ -1,0 +1,36 @@
+id: ""
+difficulty: 3
+tags: [rest, http, status-codes]
+
+variants:
+  - type: matching
+    text: "Сопоставь HTTP статус-код с его значением:"
+    pairs:
+      - left: "201 Created"
+        right: "Ресурс успешно создан"
+      - left: "401 Unauthorized"
+        right: "Не аутентифицирован (нет/невалидный токен)"
+      - left: "403 Forbidden"
+        right: "Аутентифицирован, но нет прав"
+      - left: "404 Not Found"
+        right: "Ресурс не найден"
+      - left: "429 Too Many Requests"
+        right: "Превышен лимит запросов (rate limit)"
+    distractors:
+      - "Запрос успешен, тело отсутствует"
+
+  - type: multiple_choice
+    text: "В чём разница между 401 и 403?"
+    options:
+      - text: "401 — не аутентифицирован; 403 — аутентифицирован, но доступ запрещён"
+        correct: true
+        feedback: "Верно. 401 про «кто ты», 403 про «тебе нельзя»."
+      - text: "401 — ошибка сервера, 403 — ошибка клиента"
+        feedback: "Оба — 4xx, ошибки клиента."
+      - text: "Это синонимы"
+        feedback: "Нет, у них разный смысл."
+      - text: "403 значит, что ресурс не найден"
+        feedback: "Не найден — это 404."
+    reference_answer: >
+      401 Unauthorized — нет валидной аутентификации. 403 Forbidden —
+      пользователь известен, но не имеет прав на ресурс.

@@ -1,0 +1,28 @@
+id: ""
+difficulty: 2
+tags: [kafka, log, model]
+
+variants:
+  - type: multiple_choice
+    text: "Что происходит с сообщением в Kafka после того, как консьюмер его прочитал?"
+    options:
+      - text: "Оно остаётся в логе и живёт до конца retention"
+        correct: true
+        feedback: "Да. Kafka — append-only лог; чтение не удаляет сообщение."
+      - text: "Сразу удаляется, как в классической очереди"
+        feedback: "Нет, это поведение RabbitMQ после ack, а не Kafka."
+      - text: "Переносится в dead letter queue"
+        feedback: "Нет, у Kafka нет такого автоматического поведения при чтении."
+      - text: "Помечается прочитанным и блокируется для других групп"
+        feedback: "Нет, другие группы читают тот же лог независимо."
+    reference_answer: >
+      Kafka — это персистентный append-only лог. Сообщение не удаляется после
+      чтения, а хранится до истечения retention; консьюмеры читают по offset и
+      могут перечитывать.
+
+  - type: true_false
+    text: "В Kafka разные consumer group читают один топик независимо, каждая со своими offset."
+    correct: true
+    reference_answer: >
+      Да. Лог общий, но каждая группа держит свои offset и читает поток
+      независимо от других групп.

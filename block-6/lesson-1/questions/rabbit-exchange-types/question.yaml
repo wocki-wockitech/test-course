@@ -1,0 +1,32 @@
+id: ""
+difficulty: 3
+tags: [rabbitmq, exchange, routing]
+
+variants:
+  - type: matching
+    text: "Сопоставь тип exchange в RabbitMQ с его поведением:"
+    pairs:
+      - left: "direct"
+        right: "Точное совпадение routing key с ключом binding"
+      - left: "topic"
+        right: "Совпадение routing key по шаблону с * и #"
+      - left: "fanout"
+        right: "Игнорирует routing key, шлёт во все привязанные очереди"
+      - left: "headers"
+        right: "Маршрутизация по заголовкам сообщения, а не по routing key"
+
+  - type: multiple_choice
+    text: "Какой exchange выбрать для broadcast — рассылки сообщения сразу во все привязанные очереди?"
+    options:
+      - text: "fanout"
+        correct: true
+        feedback: "Да. fanout игнорирует routing key и шлёт во все очереди."
+      - text: "direct"
+        feedback: "Нет, direct шлёт по точному совпадению ключа."
+      - text: "topic"
+        feedback: "topic маршрутизирует по шаблону, не обязательно во все."
+      - text: "headers"
+        feedback: "headers маршрутизирует по заголовкам, не broadcast по смыслу."
+    reference_answer: >
+      Для широковещательной рассылки используют fanout: он не смотрит на routing
+      key и отправляет сообщение во все привязанные к нему очереди.

@@ -1,0 +1,21 @@
+# StudyMe block manifest
+# https://docs.studyme.wockitech.local/format/block
+
+# Stable UUID — generated automatically. Do NOT change.
+id: c94ac3c5-2165-4b8c-a9ce-faec88d6bd0b
+
+# Display
+title: "Микросервисы и API: архитектура, REST, gRPC"
+description: "Микросервисная архитектура vs монолит, границы сервисов, паттерны (API Gateway, Saga, Circuit Breaker), REST API и HTTP, gRPC и Protobuf. Для собеса на Middle+/Senior PHP/Go."
+
+# Lesson order. Slug = folder name.
+lessons:
+  - lesson-1
+  - lesson-2
+  - lesson-3
+
+# Block test (final exam at the end of the block)
+test:
+  question_count: 10
+  pass_threshold: 0.7
+  prefer_failed: true

@@ -6,38 +6,52 @@
 id: e9f0a2d1-9446-4a55-898f-70c92f1d55c4
 
 # Human-readable identifier. Used in URLs.
-# Format: lowercase, kebab-case, [a-z0-9-]+
-slug: my-course
+slug: php-go-interview-blitz
 
 # Display
-title: "My Course"
+title: "PHP/Golang Backend: блиц-подготовка к собесу за вечер"
 description: >
-  Short description of the course (1-3 sentences).
-  Shown in the catalog.
+  Интенсивный курс под вакансию Senior/Middle+ PHP/Golang Developer.
+  Простая теория + много тренировочных вопросов: микросервисы, PostgreSQL/MySQL,
+  Redis/MongoDB, REST/gRPC, Kafka/RabbitMQ, Docker/Kubernetes, тестирование и
+  оптимизация. Цель — за один вечер вбить в голову всё, что спросят на интервью.
 
 # Content language (ISO 639-1)
 language: ru
 
 # Difficulty: beginner | intermediate | advanced
-difficulty: beginner
+difficulty: advanced
 
 # Tags for search and filtering
 tags:
-  - example
+  - php
+  - golang
+  - microservices
+  - postgresql
+  - redis
+  - kafka
+  - docker
+  - kubernetes
+  - interview
 
 # Optional cover image (relative path, served from the repo)
-cover: assets/cover.png
+# cover: assets/cover.png
 
 # License of the course content (SPDX identifier or 'Proprietary')
-license: CC-BY-4.0
+license: Proprietary
 
 # Authors (display only — actual ownership comes from GitHub repo permissions)
 authors:
-  - name: "Your Name"
-    url: "https://github.com/your-username"
+  - name: "Course Author"
 
 # Block order. Slug = folder name in the repo root.
 # Linear progression: students complete blocks top-to-bottom.
 blocks:
-  - block-1
-  # - block-2
+  - block-1   # PHP: язык, ООП, SOLID, паттерны, производительность
+  - block-2   # Golang: основы, конкурентность, рантайм
+  - block-3   # Реляционные БД: PostgreSQL/MySQL, транзакции, индексы, оптимизация
+  - block-4   # NoSQL и кеширование: Redis, MongoDB
+  - block-5   # Микросервисы и API: архитектура, REST/gRPC, взаимодействие
+  - block-6   # Очереди: Kafka и RabbitMQ
+  - block-7   # Docker и Kubernetes
+  - block-8   # Тестирование, рефакторинг, процессы, оптимизация
