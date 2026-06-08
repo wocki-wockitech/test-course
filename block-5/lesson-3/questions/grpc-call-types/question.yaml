@@ -1,0 +1,32 @@
+id: ""
+difficulty: 3
+tags: [grpc, streaming, rpc]
+
+variants:
+  - type: matching
+    text: "Сопоставь тип вызова gRPC с его описанием:"
+    pairs:
+      - left: "Unary"
+        right: "Один запрос — один ответ"
+      - left: "Server streaming"
+        right: "Один запрос — поток ответов"
+      - left: "Client streaming"
+        right: "Поток запросов — один ответ"
+      - left: "Bidirectional streaming"
+        right: "Оба стороны стримят одновременно"
+
+  - type: multiple_choice
+    text: "Какой тип вызова gRPC подходит для чата в реальном времени?"
+    options:
+      - text: "Bidirectional streaming"
+        correct: true
+        feedback: "Верно. Обе стороны шлют сообщения одновременно по одному соединению."
+      - text: "Unary"
+        feedback: "Один запрос-ответ не подходит для непрерывного двустороннего обмена."
+      - text: "Server streaming"
+        feedback: "Это только поток от сервера; клиент не стримит обратно."
+      - text: "Client streaming"
+        feedback: "Это только поток от клиента; сервер не стримит обратно."
+    reference_answer: >
+      Для чата нужен двусторонний поток сообщений — bidirectional streaming,
+      где и клиент, и сервер отправляют данные одновременно.

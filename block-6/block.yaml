@@ -1,0 +1,20 @@
+# StudyMe block manifest
+# https://docs.studyme.wockitech.local/format/block
+
+# Stable UUID — generated automatically. Do NOT change.
+id: cb58f231-9811-4994-a937-fa6355087d74
+
+# Display
+title: "Очереди сообщений: Kafka и RabbitMQ"
+description: "Зачем нужны очереди, гарантии доставки, идемпотентность, модель RabbitMQ (exchange/queue/binding), лог-модель Kafka (топики, партиции, offset, consumer group). Когда что выбирать. База для собеса."
+
+# Lesson order. Slug = folder name.
+lessons:
+  - lesson-1
+  - lesson-2
+
+# Block test (final exam at the end of the block)
+test:
+  question_count: 10
+  pass_threshold: 0.7
+  prefer_failed: true

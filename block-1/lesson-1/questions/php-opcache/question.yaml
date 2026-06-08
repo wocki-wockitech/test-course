@@ -1,0 +1,34 @@
+id: ""
+difficulty: 2
+tags: [php, opcache, performance, runtime]
+
+variants:
+  - type: multiple_choice
+    text: "Что именно кеширует OPcache?"
+    options:
+      - text: "Скомпилированные opcodes в разделяемой памяти"
+        correct: true
+        feedback: "Да. OPcache хранит байткод, чтобы не парсить и не компилировать на каждый запрос."
+      - text: "Результаты SQL-запросов"
+        feedback: "Нет, это делают кеши данных (Redis/Memcached), а не OPcache."
+      - text: "HTML-ответы страниц"
+        feedback: "Нет, это full-page cache, другое."
+      - text: "Сессии пользователей"
+        feedback: "Нет, сессии хранятся отдельно (файлы/Redis)."
+    reference_answer: >
+      OPcache держит скомпилированные opcodes в shared memory, исключая
+      повторный лексинг/парсинг/компиляцию на каждый запрос.
+
+  - type: ordering
+    text: "Расположи этапы выполнения PHP-скрипта по порядку:"
+    items:
+      - "Лексинг и парсинг в AST"
+      - "Компиляция AST в opcodes"
+      - "Исполнение opcodes в Zend VM"
+
+  - type: true_false
+    text: "JIT в PHP 8 сильнее всего ускоряет CPU-bound задачи, а не типичный web-IO."
+    correct: true
+    reference_answer: >
+      JIT компилирует часть opcodes в машинный код. Для IO-bound веба выигрыш
+      небольшой, для вычислительных задач — заметный.

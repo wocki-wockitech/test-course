@@ -1,0 +1,21 @@
+# StudyMe block manifest
+# https://docs.studyme.wockitech.local/format/block
+
+# Stable UUID — generated automatically. Do NOT change.
+id: 7f3c1e84-6b2a-4d59-9c0f-2e8a51d4b7a6
+
+# Display
+title: "Golang: язык, конкурентность, рантайм"
+description: "Go для бэкенда: типы и интерфейсы, обработка ошибок, goroutines и каналы, context, GMP-планировщик, GC и профилирование. База для собеса на Senior/Middle+ PHP/Golang."
+
+# Lesson order. Slug = folder name.
+lessons:
+  - lesson-1
+  - lesson-2
+  - lesson-3
+
+# Block test (final exam at the end of the block)
+test:
+  question_count: 10
+  pass_threshold: 0.7
+  prefer_failed: true

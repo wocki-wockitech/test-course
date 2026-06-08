@@ -5,24 +5,16 @@
 id: 1a3fbc9b-0a69-4776-8648-3d5ce4a02e25
 
 # Display
-title: "First Block"
-description: "Short description of what this block covers."
+title: "PHP: язык, ООП, паттерны, производительность"
+description: "PHP 7.4+/8: типы, особенности рантайма, ООП, SOLID, паттерны, оптимизация. База для собеса на бэкенд."
 
 # Lesson order. Slug = folder name.
-# Linear progression: students complete lessons top-to-bottom.
 lessons:
   - lesson-1
+  - lesson-2
 
 # Block test (final exam at the end of the block)
 test:
-  # How many questions to draw from the block's question pool
-  question_count: 5
-
-  # Minimum score (0.0 - 1.0) to pass and unlock the next block
+  question_count: 10
   pass_threshold: 0.7
-
-  # Prefer questions the student previously answered incorrectly
   prefer_failed: true
-
-  # Optional: limit time per question (seconds, omit for no limit)
-  # time_limit_per_question: 60

@@ -1,0 +1,28 @@
+id: ""
+difficulty: 2
+tags: [redis, cache, basics]
+
+variants:
+  - type: multiple_choice
+    text: "Что из перечисленного точнее всего описывает Redis?"
+    options:
+      - text: "In-memory key-value хранилище с разными структурами данных"
+        correct: true
+        feedback: "Верно. Данные в RAM, есть string/hash/list/set/zset и др."
+      - text: "Реляционная СУБД с поддержкой JOIN и транзакций ACID"
+        feedback: "Нет, это про PostgreSQL/MySQL. Redis — key-value стор."
+      - text: "Документная БД для хранения JSON-документов с гибкой схемой"
+        feedback: "Это описание MongoDB, а не Redis."
+      - text: "Брокер сообщений на диске с гарантией доставки exactly-once"
+        feedback: "Redis умеет в очереди, но это не его основное определение."
+    reference_answer: >
+      Redis — in-memory key-value стор. Данные в оперативной памяти, поэтому
+      операции за микросекунды. Поддерживает богатые структуры данных и
+      используется как кеш, хранилище сессий, брокер и для локов.
+
+  - type: true_false
+    text: "Redis обрабатывает команды в один поток, поэтому каждая отдельная команда выполняется атомарно."
+    correct: true
+    reference_answer: >
+      Да, обработка команд однопоточная — команда выполняется целиком без
+      пересечения с другими, что убирает гонки на уровне отдельной операции.

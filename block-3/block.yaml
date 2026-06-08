@@ -1,0 +1,21 @@
+# StudyMe block manifest
+# https://docs.studyme.wockitech.local/format/block
+
+# Stable UUID — generated automatically. Do NOT change.
+id: 497782c6-f73b-4ede-a882-57158b383bfd
+
+# Display
+title: "Реляционные БД: PostgreSQL/MySQL, транзакции, индексы, оптимизация"
+description: "Транзакции и ACID, уровни изоляции и аномалии, MVCC, индексы и EXPLAIN, нормализация, репликация, шардирование, пул соединений. База для собеса на бэкенд."
+
+# Lesson order. Slug = folder name.
+lessons:
+  - lesson-1
+  - lesson-2
+  - lesson-3
+
+# Block test (final exam at the end of the block)
+test:
+  question_count: 10
+  pass_threshold: 0.7
+  prefer_failed: true

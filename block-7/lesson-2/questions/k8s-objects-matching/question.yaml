@@ -1,0 +1,39 @@
+id: ""
+difficulty: 2
+tags: [kubernetes, objects, basics]
+
+variants:
+  - type: matching
+    text: "Сопоставь объект Kubernetes с его назначением:"
+    pairs:
+      - left: "Pod"
+        right: "Минимальная единица развёртывания (один или несколько контейнеров)"
+      - left: "Deployment"
+        right: "Декларативные обновления и откаты набора подов"
+      - left: "Service"
+        right: "Стабильная сетевая точка доступа к подам"
+      - left: "ConfigMap"
+        right: "Несекретная конфигурация приложения"
+      - left: "Secret"
+        right: "Хранение чувствительных данных (пароли, токены)"
+      - left: "Ingress"
+        right: "HTTP(S)-маршрутизация снаружи в сервисы"
+    distractors:
+      - "Хранилище образов контейнеров"
+
+  - type: multiple_choice
+    text: "Какой объект на практике используют для управления приложением с откатами и постепенными обновлениями?"
+    options:
+      - text: "Deployment"
+        correct: true
+        feedback: "Верно. Deployment управляет ReplicaSet и даёт rolling update/rollback."
+      - text: "Pod напрямую"
+        feedback: "Голый Pod не пересоздаётся и не обновляется декларативно."
+      - text: "ConfigMap"
+        feedback: "ConfigMap — это конфигурация, не управление подами."
+      - text: "Ingress"
+        feedback: "Ingress — это маршрутизация HTTP, не управление подами."
+    reference_answer: >
+      Deployment управляет ReplicaSet, поддерживает число реплик и даёт
+      декларативные обновления и откаты. Поэтому работают именно с ним, а не
+      с голыми подами.
