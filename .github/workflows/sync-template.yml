@@ -39,47 +39,21 @@ jobs:
           # Sync-template workflow обновляем тоже (чтобы сам механизм обновлялся)
           git checkout template/main -- .github/workflows/sync-template.yml 2>/dev/null || true
 
-      - name: Check for changes
-        id: diff
-        run: |
-          if git diff --quiet && git diff --cached --quiet; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-          fi
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/sync-template
+          commit-message: "chore: sync infra from studyme-course-template"
+          title: "chore: sync from course template"
+          body: |
+            Обновлена инфраструктура из [studyme-course-template](https://github.com/wockitech/studyme-course-template):
 
-      - name: Create PR
-        if: steps.diff.outputs.changed == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+            - `_templates/` — шаблоны вопросов и челленджей
+            - `docs/` — документация формата контента
+            - `.github/` — CI workflows
+            - `.obsidian/` — настройки редактора
 
-          BRANCH="chore/sync-template"
-          git checkout -b "$BRANCH"
-          git add .
-          git commit -m "chore: sync infra from studyme-course-template"
-          git push origin "$BRANCH" --force
-
-          EXISTING_PR=$(gh pr list --head "$BRANCH" --state open --json number -q '.[0].number')
-          if [ -n "$EXISTING_PR" ]; then
-            echo "Updated existing PR #$EXISTING_PR"
-          else
-            gh pr create \
-              --title "chore: sync from course template" \
-              --body "Обновлена инфраструктура из [studyme-course-template](https://github.com/wockitech/studyme-course-template):
-
-          - \`_templates/\` — шаблоны вопросов и челленджей
-          - \`docs/\` — документация формата контента
-          - \`.github/\` — CI workflows
-          - \`.obsidian/\` — настройки редактора
-
-          Контент курса не затронут." \
-              --head "$BRANCH" \
-              --base main
-          fi
-
-      - name: No changes
-        if: steps.diff.outputs.changed == 'false'
-        run: echo "✅ Already up to date with template"
+            Контент курса не затронут.
+          committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
