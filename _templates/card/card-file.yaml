@@ -1,0 +1,78 @@
+# Template: single card file for cards/<slug>.yaml format.
+#
+# One file per question concept. Supports multiple questions (alternative
+# formulations). The file name (without .yaml) becomes the question slug.
+#
+# Supported question types:
+#   multiple_choice, true_false, ordering, matching, categorize,
+#   free_text, coding, git_interactive
+#
+# i18n: text fields accept either a plain string (uses course default_language)
+# or a {lang: text} map for multiple languages.
+
+id: ""  # auto-filled by studyme-action fix-ids, never change
+difficulty: 2  # 1-5
+tags: []  # optional, for analytics
+
+questions:
+  # ─── multiple_choice ──────────────────────────────────────────
+  - type: multiple_choice
+    text:
+      ru: "Вопрос на русском?"
+      en: "Question in English?"
+    options:
+      - text: { ru: "Вариант A", en: "Option A" }
+        correct: true
+        feedback: { ru: "Верно!", en: "Correct!" }
+      - text: { ru: "Вариант B", en: "Option B" }
+        feedback: { ru: "Неверно.", en: "Incorrect." }
+
+  # ─── true_false ───────────────────────────────────────────────
+  # - type: true_false
+  #   text: "Statement to evaluate."
+  #   correct: true
+
+  # ─── ordering ─────────────────────────────────────────────────
+  # - type: ordering
+  #   text: "Arrange in correct order:"
+  #   items:
+  #     - "Step 1"  # correct order = file order
+  #     - "Step 2"
+  #     - "Step 3"
+
+  # ─── matching ─────────────────────────────────────────────────
+  # - type: matching
+  #   text: "Match left to right:"
+  #   pairs:
+  #     - left: "Term A"
+  #       right: "Definition A"
+  #     - left: "Term B"
+  #       right: "Definition B"
+  #   distractors:  # extra items on the right (optional)
+  #     - "Wrong definition"
+
+  # ─── categorize ───────────────────────────────────────────────
+  # - type: categorize
+  #   text: "Sort items into categories:"
+  #   categories:
+  #     - name: "Category 1"
+  #       items: ["Item A", "Item B"]
+  #     - name: "Category 2"
+  #       items: ["Item C", "Item D"]
+  #   distractors:
+  #     - "Unrelated item"
+
+  # ─── free_text ────────────────────────────────────────────────
+  # - type: free_text
+  #   text: "Explain..."
+  #   reference_answer: "Expected answer"
+  #   evaluation_criteria:
+  #     must_mention: ["key term"]
+  #     bonus: ["extra term"]
+  #   max_score: 5
+  #   pass_threshold: 0.6
+
+  # ─── coding ───────────────────────────────────────────────────
+  # - type: coding
+  #   text: "Implement the function."
+  #   challenge_slug: my-challenge
