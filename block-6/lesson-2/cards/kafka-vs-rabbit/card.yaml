@@ -1,0 +1,43 @@
+id: 6003f57a-d77b-4855-b1e5-5aceeef0b2c6
+difficulty: 4
+tags: [kafka, rabbitmq, comparison, architecture]
+
+questions:
+  - type: categorize
+    text: "Раздели характеристики по брокеру, которому они больше соответствуют:"
+    categories:
+      - name: "Kafka"
+        items: ["Append-only лог с retention", "Переигрывание истории по offset", "Очень высокий throughput на стриминге", "Партиции как единица параллелизма"]
+      - name: "RabbitMQ"
+        items: ["Гибкая маршрутизация через exchange и routing key", "Сообщение удаляется после ack", "Dead letter queue из коробки"]
+    distractors:
+      - "Хранит данные в виде B-tree индексов СУБД"
+
+  - type: matching
+    text: "Сопоставь задачу с более подходящим брокером:"
+    pairs:
+      - left: "Поток событий с переигрыванием истории"
+        right: "Kafka"
+      - left: "Очередь фоновых задач с подтверждениями и DLQ"
+        right: "RabbitMQ"
+      - left: "Высокий throughput аналитического стриминга"
+        right: "Kafka"
+      - left: "Сложная маршрутизация по routing key и приоритеты"
+        right: "RabbitMQ"
+
+  - type: multiple_choice
+    text: "В каком сценарии Kafka подходит лучше, чем RabbitMQ?"
+    options:
+      - text: "Нужен высокий throughput потока событий с возможностью перечитать историю"
+        correct: true
+        feedback: "Да. Лог-модель Kafka заточена под стриминг и переигрывание."
+      - text: "Нужна гибкая маршрутизация по routing key с приоритетами очередей"
+        feedback: "Это сильная сторона RabbitMQ, а не Kafka."
+      - text: "Нужны DLQ и точечная адресная доставка команд"
+        feedback: "Это естественнее в RabbitMQ."
+      - text: "Нужно удалять сообщение сразу после обработки одним консьюмером"
+        feedback: "Это модель RabbitMQ (ack удаляет), а не Kafka."
+    reference_answer: >
+      Kafka выигрывает на потоках событий, высоком throughput и переигрывании
+      истории. RabbitMQ — на очередях задач, гибкой маршрутизации, приоритетах и
+      DLQ.

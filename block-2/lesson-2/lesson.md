@@ -204,12 +204,12 @@ close(jobs) // сигнал воркерам, что задач больше н�
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] go-deadlock
-> [!quiz] go-data-race
-> [!quiz] go-channels
-> [!quiz] go-context
-> [!quiz] go-sync-primitives
-> [!quiz] go-worker-pool
+> [!card] go-deadlock
+> [!card] go-data-race
+> [!card] go-channels
+> [!card] go-context
+> [!card] go-sync-primitives
+> [!card] go-worker-pool
 
 ## Итог
 

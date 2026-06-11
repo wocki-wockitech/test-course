@@ -1,0 +1,27 @@
+id: 8254bba8-b469-4977-8729-f8c0cab3b340
+difficulty: 2
+tags: [db, transactions, acid]
+
+questions:
+  - type: multiple_choice
+    text: "Что гарантирует свойство Atomicity в ACID?"
+    options:
+      - text: "Транзакция применяется целиком или не применяется вовсе"
+        correct: true
+        feedback: "Верно. Если что-то упало в середине — изменения откатываются полностью."
+      - text: "Параллельные транзакции не мешают друг другу"
+        feedback: "Это про Isolation, а не Atomicity."
+      - text: "Данные не пропадут после коммита даже при сбое"
+        feedback: "Это про Durability."
+      - text: "Не нарушаются ограничения целостности (FK, CHECK)"
+        feedback: "Это про Consistency."
+    reference_answer: >
+      Atomicity — «всё или ничего»: при ошибке транзакция откатывается целиком.
+      Обеспечивается журналом (WAL в PostgreSQL, redo/undo в InnoDB).
+
+  - type: true_false
+    text: "Durability означает, что после успешного COMMIT данные переживут сбой питания."
+    correct: true
+    reference_answer: >
+      После COMMIT изменения зафиксированы в журнале на диске (WAL/redo log),
+      поэтому восстанавливаются после сбоя.

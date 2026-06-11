@@ -106,11 +106,11 @@ service UserService {
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] grpc-basics
-> [!quiz] grpc-vs-rest
-> [!quiz] grpc-call-types
-> [!quiz] proto-compat
-> [!quiz] grpc-when-to-use
+> [!card] grpc-basics
+> [!card] grpc-vs-rest
+> [!card] grpc-call-types
+> [!card] proto-compat
+> [!card] grpc-when-to-use
 
 ## Итог
 

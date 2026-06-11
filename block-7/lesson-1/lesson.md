@@ -132,12 +132,12 @@ ENTRYPOINT ["/server"]
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] docker-vs-vm
-> [!quiz] docker-images-layers
-> [!quiz] docker-instructions-matching
-> [!quiz] docker-build-order
-> [!quiz] docker-cmd-entrypoint
-> [!quiz] docker-dockerfile-review
+> [!card] docker-vs-vm
+> [!card] docker-images-layers
+> [!card] docker-instructions-matching
+> [!card] docker-build-order
+> [!card] docker-cmd-entrypoint
+> [!card] docker-dockerfile-review
 
 ## Итог
 

@@ -1,0 +1,28 @@
+id: 7447ae5e-fa10-4d81-ad19-08a83e0a01d4
+difficulty: 3
+tags: [grpc, rest, comparison]
+
+questions:
+  - type: multiple_choice
+    text: "Какое утверждение про отличие gRPC от REST верно?"
+    options:
+      - text: "gRPC передаёт бинарный protobuf поверх HTTP/2, REST обычно — текстовый JSON"
+        correct: true
+        feedback: "Верно. Отсюда компактность gRPC и человекочитаемость REST."
+      - text: "gRPC работает только по HTTP/1.1"
+        feedback: "Наоборот, gRPC требует HTTP/2."
+      - text: "REST нельзя вызвать из браузера, а gRPC можно напрямую"
+        feedback: "Всё наоборот: REST вызывается из браузера легко, gRPC требует grpc-web/прокси."
+      - text: "gRPC не поддерживает стриминг"
+        feedback: "Поддерживает, причём четыре типа вызовов."
+    reference_answer: >
+      gRPC — бинарный protobuf поверх HTTP/2, строгий контракт, встроенный
+      стриминг. REST — обычно JSON, человекочитаем, легко вызывается из
+      браузера и кешируется.
+
+  - type: true_false
+    text: "Для прямого вызова gRPC из браузера обычно нужен grpc-web или прокси."
+    correct: true
+    reference_answer: >
+      Браузер не умеет работать с произвольными HTTP/2-фреймами gRPC напрямую,
+      поэтому используют grpc-web и прокси-слой.

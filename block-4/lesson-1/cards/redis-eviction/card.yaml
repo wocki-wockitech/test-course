@@ -1,0 +1,45 @@
+id: 8bfa674b-02dd-4ab4-82eb-e22de2bdea7e
+difficulty: 3
+tags: [redis, eviction, memcached, locks]
+
+questions:
+  - type: multiple_choice
+    text: "Какую eviction policy обычно выбирают для Redis в роли чистого кеша?"
+    options:
+      - text: "allkeys-lru (вытеснять давно не используемые из всех ключей)"
+        correct: true
+        feedback: "Верно. Для кеша подходит allkeys-lru или allkeys-lfu."
+      - text: "noeviction (отдавать ошибку на запись при нехватке памяти)"
+        feedback: "Для кеша плохо: записи начнут падать вместо вытеснения старого."
+      - text: "volatile-ttl всегда, независимо от наличия TTL"
+        feedback: "volatile-* работает только для ключей с TTL; для кеша чаще allkeys-lru/lfu."
+      - text: "allkeys-random как самый предсказуемый"
+        feedback: "Случайное вытеснение редко лучше LRU/LFU по hit rate."
+    reference_answer: >
+      Для чистого кеша обычно ставят allkeys-lru или allkeys-lfu — вытесняются
+      наименее нужные ключи. noeviction приведёт к ошибкам записи при заполнении.
+
+  - type: true_false
+    text: "Команда `SET lock:res token NX EX 30` атомарно захватывает лок (только если ключа нет) и задаёт авто-освобождение через 30 секунд."
+    correct: true
+    reference_answer: >
+      Да. NX ставит ключ только при отсутствии (атомарный захват), EX 30 даёт
+      TTL, чтобы лок не завис навсегда при падении владельца. Снятие сверяет
+      токен через Lua, чтобы не снять чужой лок.
+
+  - type: multiple_choice
+    text: "Чем Redis отличается от Memcached?"
+    options:
+      - text: "Redis даёт богатые структуры данных, персистентность и репликацию; Memcached — простой многопоточный кеш строк"
+        correct: true
+        feedback: "Верно. Redis универсальнее, Memcached проще и заточен под кеш."
+      - text: "Memcached хранит данные на диске, а Redis только в памяти"
+        feedback: "Наоборот: персистентность есть как раз у Redis."
+      - text: "Redis не умеет кешировать строки, только объекты"
+        feedback: "Redis отлично кеширует и строки (тип string)."
+      - text: "Memcached поддерживает sorted set, а Redis нет"
+        feedback: "Sorted set — это как раз фишка Redis, в Memcached его нет."
+    reference_answer: >
+      Memcached — простой многопоточный кеш строк, легко шардируется. Redis —
+      богатые структуры (hash/list/set/zset), персистентность, репликация,
+      Pub/Sub, скрипты. Нужны структуры/персистентность/брокер — берём Redis.

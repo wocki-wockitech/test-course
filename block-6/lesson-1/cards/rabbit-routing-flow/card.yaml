@@ -1,0 +1,31 @@
+id: baa5cbea-097d-43dc-a56c-9826c01d2012
+difficulty: 2
+tags: [rabbitmq, routing, model]
+
+questions:
+  - type: ordering
+    text: "Расположи путь сообщения в RabbitMQ по порядку:"
+    items:
+      - "Producer публикует сообщение в exchange"
+      - "Exchange по binding и routing key выбирает очереди"
+      - "Сообщение попадает в очередь и ждёт"
+      - "Consumer читает сообщение из очереди"
+      - "Consumer отправляет ack, брокер удаляет сообщение"
+
+  - type: multiple_choice
+    text: "В конфиге брокера `default_consumer_prefetch = 20`. Что это ограничивает?"
+    file: rabbitmq.conf
+    options:
+      - text: "Сколько неподтверждённых (без ack) сообщений брокер отдаст одному консьюмеру за раз"
+        correct: true
+        feedback: "Да. Это prefetch (basic.qos): контроль числа in-flight сообщений на консьюмера."
+      - text: "Максимальный размер одного сообщения в байтах"
+        feedback: "Нет, это не про размер сообщения."
+      - text: "Сколько всего очередей можно создать"
+        feedback: "Нет, prefetch не ограничивает число очередей."
+      - text: "Время жизни сообщения (TTL)"
+        feedback: "Нет, TTL — отдельная настройка."
+    reference_answer: >
+      prefetch ограничивает число неподтверждённых сообщений, отданных одному
+      консьюмеру. Маленький prefetch даёт честное распределение, большой — выше
+      throughput, но риск перекоса нагрузки.

@@ -170,11 +170,11 @@ func leak() {
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] go-gmp-scheduler
-> [!quiz] go-escape-analysis
-> [!quiz] go-gc
-> [!quiz] go-goroutine-leak
-> [!quiz] go-pprof
+> [!card] go-gmp-scheduler
+> [!card] go-escape-analysis
+> [!card] go-gc
+> [!card] go-goroutine-leak
+> [!card] go-pprof
 
 ## Итог
 

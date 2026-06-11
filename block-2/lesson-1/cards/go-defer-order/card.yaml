@@ -1,0 +1,29 @@
+id: fc9c1b9d-fa95-4a7c-b76f-1956c2711975
+difficulty: 3
+tags: [go, defer, evaluation]
+
+questions:
+  - type: multiple_choice
+    text: "Что выведет программа из файла?"
+    file: main.go
+    options:
+      - text: "body: 2 / defer B: 1 / defer A: 0"
+        correct: true
+        feedback: "Верно. Аргументы defer вычисляются при объявлении (A=0, B=1), а выполняются в порядке LIFO."
+      - text: "body: 2 / defer A: 2 / defer B: 2"
+        feedback: "Нет. Аргументы defer фиксируются в момент объявления, а не при выходе из функции."
+      - text: "body: 2 / defer A: 0 / defer B: 1"
+        feedback: "Порядок defer — LIFO: сначала B, потом A."
+      - text: "body: 2 / defer B: 2 / defer A: 2"
+        feedback: "Аргументы вычисляются при объявлении: B=1, A=0."
+    reference_answer: >
+      Сначала печатается тело: body: 2. Аргументы defer вычислены в момент
+      объявления (A получил i=0, B получил i=1). defer выполняются в порядке
+      LIFO: defer B: 1, затем defer A: 0.
+
+  - type: ordering
+    text: "В каком порядке выполнятся эти отложенные вызовы? (сверху — первый выполненный)"
+    items:
+      - "defer, объявленный последним"
+      - "defer, объявленный в середине"
+      - "defer, объявленный первым"

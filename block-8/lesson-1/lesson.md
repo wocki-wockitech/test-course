@@ -154,12 +154,12 @@ func TestAbs(t *testing.T) {
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] test-pyramid
-> [!quiz] test-doubles
-> [!quiz] unit-vs-integration
-> [!quiz] tdd-cycle
-> [!quiz] go-table-tests
-> [!quiz] test-coverage
+> [!card] test-pyramid
+> [!card] test-doubles
+> [!card] unit-vs-integration
+> [!card] tdd-cycle
+> [!card] go-table-tests
+> [!card] test-coverage
 
 ## Итог
 

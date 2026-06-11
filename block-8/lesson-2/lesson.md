@@ -142,12 +142,12 @@ graph LR
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] refactoring-legacy
-> [!quiz] code-smells
-> [!quiz] code-review
-> [!quiz] scrum-roles
-> [!quiz] scrum-ceremonies
-> [!quiz] perf-optimization
+> [!card] refactoring-legacy
+> [!card] code-smells
+> [!card] code-review
+> [!card] scrum-roles
+> [!card] scrum-ceremonies
+> [!card] perf-optimization
 
 ## Итог
 

@@ -1,0 +1,29 @@
+id: 4c5ee039-3deb-404f-9675-651582ca6cc8
+difficulty: 3
+tags: [kubernetes, probes, health, reliability]
+
+questions:
+  - type: multiple_choice
+    text: "Чем liveness-проба отличается от readiness-пробы?"
+    options:
+      - text: "liveness при отказе перезапускает контейнер, readiness при отказе убирает под из эндпоинтов Service (без перезапуска)"
+        correct: true
+        feedback: "Верно. liveness — про «жив ли процесс», readiness — про «готов ли принимать трафик»."
+      - text: "Это синонимы, разницы нет"
+        feedback: "Нет, реакция кластера принципиально разная."
+      - text: "readiness перезапускает контейнер, liveness убирает из трафика"
+        feedback: "Наоборот: перезапускает liveness, из трафика убирает readiness."
+      - text: "Обе только пишут логи и ничего не делают"
+        feedback: "Нет, обе влияют на поведение кластера."
+    reference_answer: >
+      liveness отвечает на вопрос «жив ли процесс»; при провале контейнер
+      перезапускается. readiness отвечает «готов ли под к трафику»; при
+      провале под исключается из эндпоинтов Service, но не перезапускается.
+
+  - type: matching
+    text: "Сопоставь пробу с реакцией Kubernetes при её провале:"
+    pairs:
+      - left: "liveness"
+        right: "Перезапуск контейнера"
+      - left: "readiness"
+        right: "Под убирается из эндпоинтов Service (трафик не идёт)"

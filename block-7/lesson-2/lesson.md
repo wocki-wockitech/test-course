@@ -126,12 +126,12 @@ resources:
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] k8s-objects-matching
-> [!quiz] k8s-pod
-> [!quiz] k8s-service-selector
-> [!quiz] k8s-service-types
-> [!quiz] k8s-probes
-> [!quiz] k8s-deployment-review
+> [!card] k8s-objects-matching
+> [!card] k8s-pod
+> [!card] k8s-service-selector
+> [!card] k8s-service-types
+> [!card] k8s-probes
+> [!card] k8s-deployment-review
 
 ## Итог
 

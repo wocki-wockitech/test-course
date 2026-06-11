@@ -229,12 +229,12 @@ func safe() (err error) {
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] go-nil-map
-> [!quiz] go-defer-order
-> [!quiz] go-slice-append
-> [!quiz] go-interfaces
-> [!quiz] go-errors-wrapping
-> [!quiz] go-receivers
+> [!card] go-nil-map
+> [!card] go-defer-order
+> [!card] go-slice-append
+> [!card] go-interfaces
+> [!card] go-errors-wrapping
+> [!card] go-receivers
 
 ## Итог
 

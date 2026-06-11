@@ -120,12 +120,12 @@ graph LR
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] mono-vs-micro
-> [!quiz] micro-pros-cons
-> [!quiz] patterns-matching
-> [!quiz] saga-transactions
-> [!quiz] idempotency
-> [!quiz] distributed-fallacies
+> [!card] mono-vs-micro
+> [!card] micro-pros-cons
+> [!card] patterns-matching
+> [!card] saga-transactions
+> [!card] idempotency
+> [!card] distributed-fallacies
 
 ## Итог
 

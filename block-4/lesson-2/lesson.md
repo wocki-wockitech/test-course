@@ -167,12 +167,12 @@ NoSQL — это не только документные БД. Четыре о�
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] mongo-document-model
-> [!quiz] mongo-sql-vs-nosql
-> [!quiz] mongo-denormalization
-> [!quiz] nosql-cap-theorem
-> [!quiz] mongo-replication-sharding
-> [!quiz] nosql-types
+> [!card] mongo-document-model
+> [!card] mongo-sql-vs-nosql
+> [!card] mongo-denormalization
+> [!card] nosql-cap-theorem
+> [!card] mongo-replication-sharding
+> [!card] nosql-types
 
 ## Итог
 

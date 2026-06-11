@@ -155,12 +155,12 @@ message) и даёт место для разбора проблем вручн�
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] mq-why
-> [!quiz] mq-delivery-guarantees
-> [!quiz] mq-idempotency
-> [!quiz] rabbit-exchange-types
-> [!quiz] rabbit-routing-flow
-> [!quiz] rabbit-ack-dlq
+> [!card] mq-why
+> [!card] mq-delivery-guarantees
+> [!card] mq-idempotency
+> [!card] rabbit-exchange-types
+> [!card] rabbit-routing-flow
+> [!card] rabbit-ack-dlq
 
 ## Итог
 

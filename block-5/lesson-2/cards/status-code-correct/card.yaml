@@ -1,0 +1,40 @@
+id: d9546c2b-5c4c-49c3-81e4-d4e41774b9b5
+difficulty: 3
+tags: [rest, http, status-codes]
+
+questions:
+  - type: multiple_choice
+    text: "Посмотри сценарии в файле. Какие статус-коды корректны для ответов A, B и C?"
+    file: api.http
+    options:
+      - text: "A — 201 Created, B — 409 Conflict, C — 204 No Content"
+        correct: true
+        feedback: "Верно. Создание → 201 с Location, конфликт уникальности → 409, удаление без тела → 204."
+      - text: "A — 200 OK, B — 400 Bad Request, C — 200 OK"
+        feedback: "Для создания лучше 201; занятый email — это конфликт состояния (409), а не битый запрос; для DELETE без тела уместен 204."
+      - text: "A — 201 Created, B — 422 Unprocessable Entity, C — 404 Not Found"
+        feedback: "422 — про невалидные данные; здесь данные валидны, но email занят — это 409. Удаление существующего ресурса не 404."
+      - text: "A — 204 No Content, B — 500 Internal Server Error, C — 201 Created"
+        feedback: "Создание не должно быть без тела/204; занятый email — не 500; для DELETE 201 не подходит."
+    reference_answer: >
+      A: ресурс создан → 201 Created с заголовком Location. B: запрос
+      синтаксически валиден, но нарушает уникальность — это конфликт состояния,
+      409 Conflict (422 — для проваленной валидации полей). C: успешное
+      удаление без тела ответа → 204 No Content.
+
+  - type: multiple_choice
+    text: "Сервер получил синтаксически корректный JSON, но поле `age` равно -5 и не проходит валидацию бизнес-правил. Какой код вернуть?"
+    options:
+      - text: "422 Unprocessable Entity"
+        correct: true
+        feedback: "Верно. Синтаксис ок, но семантическая/бизнес-валидация не прошла."
+      - text: "400 Bad Request"
+        feedback: "400 уместнее для битого синтаксиса; для проваленной валидации полей чаще используют 422."
+      - text: "500 Internal Server Error"
+        feedback: "Это ошибка клиента, а не сервера."
+      - text: "200 OK"
+        feedback: "Запрос не обработан успешно — это не 2xx."
+    reference_answer: >
+      400 — для синтаксически некорректного запроса. Когда тело валидно по
+      форме, но не проходит бизнес-валидацию, принято возвращать 422
+      Unprocessable Entity (часто с деталями ошибок по полям).

@@ -112,12 +112,12 @@ REST мыслит **ресурсами** и стандартными метод�
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] rest-principles
-> [!quiz] http-methods-idempotency
-> [!quiz] status-codes-matching
-> [!quiz] status-code-correct
-> [!quiz] api-versioning
-> [!quiz] rest-vs-rpc
+> [!card] rest-principles
+> [!card] http-methods-idempotency
+> [!card] status-codes-matching
+> [!card] status-code-correct
+> [!card] api-versioning
+> [!card] rest-vs-rpc
 
 ## Итог
 

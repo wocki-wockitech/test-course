@@ -1,0 +1,31 @@
+id: 17e92801-0fe5-4865-97d2-5e2b03d64cb8
+difficulty: 3
+tags: [nosql, data-models, databases]
+
+questions:
+  - type: categorize
+    text: "Раздели хранилища по типу модели данных NoSQL:"
+    categories:
+      - name: "Документные"
+        items: ["MongoDB", "CouchDB"]
+      - name: "Ключ-значение"
+        items: ["Redis", "DynamoDB", "Memcached"]
+      - name: "Колоночные (wide-column)"
+        items: ["Cassandra", "HBase"]
+      - name: "Графовые"
+        items: ["Neo4j"]
+    distractors:
+      - "PostgreSQL"
+      - "MySQL"
+
+  - type: matching
+    text: "Сопоставь тип NoSQL с типичным сценарием использования:"
+    pairs:
+      - left: "Документные"
+        right: "Гибкая схема, хранить агрегат целиком как документ"
+      - left: "Ключ-значение"
+        right: "Максимально быстрый доступ по ключу (кеш, сессии)"
+      - left: "Колоночные (wide-column)"
+        right: "Огромные объёмы и высокая нагрузка на запись"
+      - left: "Графовые"
+        right: "Сильно связанные данные: соцсети, графы знаний"

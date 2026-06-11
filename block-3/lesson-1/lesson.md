@@ -118,12 +118,12 @@ COMMIT;
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] db-acid
-> [!quiz] db-isolation-anomalies
-> [!quiz] db-isolation-levels
-> [!quiz] db-mvcc
-> [!quiz] db-locks
-> [!quiz] db-deadlock
+> [!card] db-acid
+> [!card] db-isolation-anomalies
+> [!card] db-isolation-levels
+> [!card] db-mvcc
+> [!card] db-locks
+> [!card] db-deadlock
 
 ## Итог
 

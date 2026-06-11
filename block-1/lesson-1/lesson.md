@@ -134,11 +134,11 @@ try {
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] php-equality
-> [!quiz] php-opcache
-> [!quiz] php-shared-nothing
-> [!quiz] php-pdo
-> [!quiz] php8-features
+> [!card] php-equality
+> [!card] php-opcache
+> [!card] php-shared-nothing
+> [!card] php-pdo
+> [!card] php8-features
 
 ## Итог
 

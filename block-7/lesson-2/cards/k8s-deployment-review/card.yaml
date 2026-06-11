@@ -1,0 +1,41 @@
+id: db7b06c6-f129-4315-a0de-6ada5d4be163
+difficulty: 4
+tags: [kubernetes, deployment, probes, yaml]
+
+questions:
+  - type: multiple_choice
+    text: "Посмотри на манифест Deployment в файле. Что он делает?"
+    file: deployment.yaml
+    options:
+      - text: "Держит 3 реплики пода с лейблом app=api, задаёт requests/limits ресурсов и liveness-пробу на /healthz"
+        correct: true
+        feedback: "Верно. replicas: 3, selector по app=api, ресурсы и livenessProbe настроены."
+      - text: "Создаёт ровно один под без контроля числа реплик"
+        feedback: "Нет, replicas: 3 — кластер держит три реплики."
+      - text: "Создаёт Service типа LoadBalancer"
+        feedback: "Нет, это Deployment, а не Service."
+      - text: "Описывает Ingress-маршрут для домена"
+        feedback: "Нет, Ingress тут не описан."
+    reference_answer: >
+      Deployment поддерживает 3 реплики подов с лейблом app=api, по этому
+      лейблу его поды сможет находить Service. Заданы requests/limits CPU и
+      памяти и liveness-проба HTTP GET на /healthz:8080.
+
+  - type: multiple_choice
+    text: "Чего важного не хватает в этом манифесте для надёжного приёма трафика?"
+    file: deployment.yaml
+    options:
+      - text: "readinessProbe — без неё под начнёт получать трафик ещё до готовности приложения"
+        correct: true
+        feedback: "Верно. liveness есть, а readiness нет — трафик может пойти на непрогретый под."
+      - text: "Поля replicas — оно обязательно и отсутствует"
+        feedback: "Нет, replicas: 3 присутствует."
+      - text: "Лейблов в template — их нет"
+        feedback: "Нет, labels: app=api заданы в template."
+      - text: "Имени образа — оно отсутствует"
+        feedback: "Нет, image указан с тегом 1.4.2."
+    reference_answer: >
+      Есть livenessProbe, но нет readinessProbe. Без readiness под попадёт в
+      эндпоинты Service сразу, ещё до готовности приложения, и часть запросов
+      получит ошибки. Для корректной выкатки и rolling update нужна
+      readiness-проба.

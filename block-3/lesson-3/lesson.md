@@ -113,11 +113,11 @@ estimated_minutes: 18
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] db-normalization
-> [!quiz] db-pg-vs-mysql
-> [!quiz] db-replication
-> [!quiz] db-sharding-partitioning
-> [!quiz] db-connection-pool
+> [!card] db-normalization
+> [!card] db-pg-vs-mysql
+> [!card] db-replication
+> [!card] db-sharding-partitioning
+> [!card] db-connection-pool
 
 ## Итог
 

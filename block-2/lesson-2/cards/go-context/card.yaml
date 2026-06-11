@@ -1,0 +1,40 @@
+id: 469decb2-fdc8-48cc-ad73-2a609c7d39b9
+difficulty: 3
+tags: [go, context, cancellation, timeout]
+
+questions:
+  - type: multiple_choice
+    text: "Зачем нужен context.Context в Go?"
+    options:
+      - text: "Прокидывать сигнал отмены, дедлайны и таймауты через цепочку вызовов"
+        correct: true
+        feedback: "Верно. Context — стандартный способ отмены и таймаутов в горутинах."
+      - text: "Хранить глобальное состояние приложения"
+        feedback: "Context не для глобального состояния; в нём передают сигнал отмены и request-scoped значения."
+      - text: "Заменять каналы для передачи данных"
+        feedback: "Данные передают каналами; context — про отмену/дедлайны."
+      - text: "Управлять памятью горутин"
+        feedback: "Памятью управляет GC, а не context."
+    reference_answer: >
+      context.Context переносит сигнал отмены, дедлайны и таймауты по цепочке
+      вызовов. Долгие операции слушают ctx.Done(), а вызывающий код делает
+      cancel(), чтобы прервать работу и освободить ресурсы.
+
+  - type: true_false
+    text: "После создания context через WithTimeout/WithCancel нужно обязательно вызвать функцию cancel (обычно через defer)."
+    correct: true
+    reference_answer: >
+      cancel освобождает связанные с context ресурсы и таймеры. Если его не
+      вызвать, возможна утечка — линтер vet это подсвечивает.
+
+  - type: matching
+    text: "Сопоставь конструктор context с его поведением:"
+    pairs:
+      - left: "context.WithCancel"
+        right: "Отмена вручную через вызов cancel()"
+      - left: "context.WithTimeout"
+        right: "Автоотмена по истечении длительности"
+      - left: "context.WithDeadline"
+        right: "Автоотмена в конкретный момент времени"
+      - left: "context.Background"
+        right: "Пустой корневой контекст без отмены"

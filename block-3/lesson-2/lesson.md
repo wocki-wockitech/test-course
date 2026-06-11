@@ -117,12 +117,12 @@ SELECT created_at FROM orders WHERE user_id = 42;  -- index-only scan
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] db-index-basics
-> [!quiz] db-index-no-apply
-> [!quiz] db-leftmost-prefix
-> [!quiz] db-covering-index
-> [!quiz] db-explain
-> [!quiz] db-nplus1
+> [!card] db-index-basics
+> [!card] db-index-no-apply
+> [!card] db-leftmost-prefix
+> [!card] db-covering-index
+> [!card] db-explain
+> [!card] db-nplus1
 
 ## Итог
 

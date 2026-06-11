@@ -1,0 +1,36 @@
+id: 534a95c4-d772-48da-b899-f667ff29fb2f
+difficulty: 3
+tags: [db, explain, optimization]
+
+questions:
+  - type: multiple_choice
+    text: "Чем `EXPLAIN ANALYZE` отличается от обычного `EXPLAIN`?"
+    options:
+      - text: "`EXPLAIN ANALYZE` реально выполняет запрос и показывает фактическое время и число строк"
+        correct: true
+        feedback: "Верно. EXPLAIN — только оценка плана, ANALYZE — фактическое выполнение."
+      - text: "Разницы нет, это синонимы"
+        feedback: "Нет: ANALYZE выполняет запрос, а EXPLAIN — только строит план."
+      - text: "`EXPLAIN ANALYZE` только проверяет синтаксис"
+        feedback: "Нет, он реально выполняет запрос."
+      - text: "`EXPLAIN` выполняет запрос, а `EXPLAIN ANALYZE` — нет"
+        feedback: "Наоборот."
+    reference_answer: >
+      EXPLAIN показывает оценочный план без выполнения. EXPLAIN ANALYZE
+      выполняет запрос и показывает фактические rows/time. Для пишущих запросов
+      оборачивай в BEGIN; ... ROLLBACK;.
+
+  - type: ordering
+    text: "Расположи шаги диагностики медленного SELECT по порядку:"
+    items:
+      - "Воспроизвести медленный запрос"
+      - "Посмотреть план через EXPLAIN ANALYZE"
+      - "Найти Seq Scan по большой таблице с фильтром"
+      - "Добавить подходящий индекс и перепроверить план"
+
+  - type: true_false
+    text: "Большой `Seq Scan` с фильтром по индексируемой колонке — частый сигнал, что не хватает индекса."
+    correct: true
+    reference_answer: >
+      Если по большой таблице идёт Seq Scan с селективным фильтром, обычно
+      помогает индекс по колонке из WHERE/JOIN.

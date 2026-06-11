@@ -188,13 +188,13 @@ SET lock:resource token NX EX 30   # захватить лок, только е�
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] redis-basics
-> [!quiz] redis-data-structures
-> [!quiz] redis-ttl-persistence
-> [!quiz] redis-cache-patterns
-> [!quiz] redis-cache-stampede
-> [!quiz] redis-commands
-> [!quiz] redis-eviction
+> [!card] redis-basics
+> [!card] redis-data-structures
+> [!card] redis-ttl-persistence
+> [!card] redis-cache-patterns
+> [!card] redis-cache-stampede
+> [!card] redis-commands
+> [!card] redis-eviction
 
 ## Итог
 

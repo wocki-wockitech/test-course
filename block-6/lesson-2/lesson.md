@@ -131,12 +131,12 @@ Kafka хранит сообщения по политике **retention**:
 
 Проверь себя — это типовые вопросы с собеса:
 
-> [!quiz] kafka-log-model
-> [!quiz] kafka-partitions-offset
-> [!quiz] kafka-key-order
-> [!quiz] kafka-consumer-group
-> [!quiz] kafka-replication-rebalance
-> [!quiz] kafka-vs-rabbit
+> [!card] kafka-log-model
+> [!card] kafka-partitions-offset
+> [!card] kafka-key-order
+> [!card] kafka-consumer-group
+> [!card] kafka-replication-rebalance
+> [!card] kafka-vs-rabbit
 
 ## Итог
 

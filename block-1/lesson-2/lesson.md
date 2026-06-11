@@ -101,11 +101,11 @@ function report(Exporter $e, array $data): string {
 
 ## Практика
 
-> [!quiz] php-solid-srp
-> [!quiz] php-interface-vs-abstract
-> [!quiz] php-strategy-pattern
-> [!quiz] php-di
-> [!quiz] php-traits
+> [!card] php-solid-srp
+> [!card] php-interface-vs-abstract
+> [!card] php-strategy-pattern
+> [!card] php-di
+> [!card] php-traits
 
 ## Итог
 

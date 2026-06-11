@@ -1,0 +1,27 @@
+id: f59dae85-4bdd-4b2d-91b4-62675bef4a0d
+difficulty: 2
+tags: [rest, http, api]
+
+questions:
+  - type: multiple_choice
+    text: "Какой URL лучше соответствует принципам REST?"
+    options:
+      - text: "`GET /users/42`"
+        correct: true
+        feedback: "Верно. Ресурс в пути, действие выражено методом GET."
+      - text: "`GET /getUser?id=42`"
+        feedback: "Глагол в пути — это RPC-стиль, не RESTful."
+      - text: "`POST /users/42/get`"
+        feedback: "Чтение должно быть GET, а не POST с глаголом в пути."
+      - text: "`GET /api?action=getUser&id=42`"
+        feedback: "Действие в query — снова RPC-стиль, не ресурсный."
+    reference_answer: >
+      В REST ресурс адресуется URI (существительное), а действие выражается
+      HTTP-методом. Чтение пользователя — это GET /users/42.
+
+  - type: true_false
+    text: "REST-сервер должен быть stateless: не хранить состояние сессии клиента между запросами."
+    correct: true
+    reference_answer: >
+      Каждый запрос самодостаточен и несёт всё нужное (включая авторизацию).
+      Это упрощает масштабирование.
