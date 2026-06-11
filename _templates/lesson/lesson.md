@@ -37,7 +37,7 @@ for available types.
 
 ## Practice
 
-> [!quiz] example-question
+> [!card] example-question
 
 ## Summary
 

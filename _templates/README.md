@@ -37,9 +37,9 @@ cp -r _templates/lesson/ my-block/my-new-lesson/
 ### Questions
 
 One file with one example per question type. Copy entries from this
-file into your lesson's `questions.yaml`.
+file into your lesson's `cards/`.
 
-→ See [`question/questions.yaml`](question/questions.yaml)
+→ See [`question/cards/`](question/cards/)
 
 ### Challenges
 

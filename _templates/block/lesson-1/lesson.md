@@ -8,4 +8,4 @@ estimated_minutes: 5
 
 Replace with your content.
 
-> [!quiz] example
+> [!card] example
