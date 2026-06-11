@@ -27,17 +27,16 @@ jobs:
           git fetch template main
 
           # Перезаписать инфра-файлы из шаблона (ваш контент не трогается)
+          # ВАЖНО: .github/workflows/ не включены — GITHUB_TOKEN не может
+          # пушить изменения в workflow-файлы. Workflow'ы обновляются при
+          # создании репо из шаблона и через update-template (PAT с workflow scope).
           git checkout template/main -- \
             _templates/ \
-            .github/workflows/studyme-id.yml \
             .github/PULL_REQUEST_TEMPLATE.md \
             docs/ \
             .obsidian/ \
             .studymeignore \
             .gitignore
-
-          # Sync-template workflow обновляем тоже (чтобы сам механизм обновлялся)
-          git checkout template/main -- .github/workflows/sync-template.yml 2>/dev/null || true
 
       - name: Check for changes
         id: diff
