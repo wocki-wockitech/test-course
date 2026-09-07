@@ -24,7 +24,7 @@ my-lesson/
 
 ## Linking to a lesson
 
-In your `questions.yaml` add a question of type `coding` or `git_interactive`
+In your `cards/` add a question of type `coding` or `git_interactive`
 that references the challenge slug:
 
 ```yaml
