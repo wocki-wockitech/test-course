@@ -11,7 +11,9 @@ Full schema for everything in a StudyMe course repository.
 │   ├── block.yaml              ← REQUIRED for each block
 │   └── <lesson-slug>/
 │       ├── lesson.md           ← REQUIRED for each lesson
-│       ├── cards/      ← optional, but recommended
+│       ├── cards/              ← optional, but recommended
+│       ├── defs/               ← optional, glossary definitions
+│       │   └── <slug>.yaml
 │       └── challenges/
 │           └── <challenge-slug>/
 │               ├── challenge.yaml  ← REQUIRED for each challenge
@@ -258,3 +260,62 @@ npx @wockitech/studyme-lint .
 ```
 
 Or it'll run automatically in CI on every PR.
+
+## defs/ (Glossary Definitions)
+
+One YAML file per glossary term in `<lesson>/defs/<slug>.yaml`.
+Definitions are auto-linked in lesson text and aggregated into a course glossary.
+
+```yaml
+id: ""                      # REQUIRED, auto-filled by fix-ids
+term: "Prepared statement"  # REQUIRED, LocalizedText (string or {lang: text})
+aliases:                    # REQUIRED, at least 1; all languages in one array
+  - "prepared statement"
+  - "prepared statements"
+  - "подготовленный запрос"
+tags: [sql, security]       # optional
+definition: |               # REQUIRED, LocalizedText, markdown supported
+  Clear explanation of the term.
+example: |                  # optional, LocalizedText, markdown supported
+  ```php
+  $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+  ```
+related: [sql-injection]    # optional, slugs of other definitions
+```
+
+### Multi-language definitions
+
+Fields `term`, `definition`, and `example` support LocalizedText maps:
+
+```yaml
+term:
+  ru: "Горутина"
+  en: "Goroutine"
+definition:
+  ru: |
+    Легковесный поток выполнения в Go.
+  en: |
+    A lightweight thread of execution in Go.
+```
+
+### Using definitions in lesson text
+
+| Syntax | Effect |
+|--------|--------|
+| _(automatic)_ | Terms matching aliases get dotted underline + tooltip |
+| `((term))` | Force-highlight a specific word as a glossary term |
+| `:::def slug` + `:::` | Render full definition card inline |
+
+### Auto-linking configuration
+
+In `course.yaml`:
+```yaml
+definitions:
+  auto_link: true             # default true
+  first_occurrence: section   # section | lesson | all
+```
+
+In lesson frontmatter (opt-out specific terms):
+```yaml
+skip_defs: [http, api]
+```
