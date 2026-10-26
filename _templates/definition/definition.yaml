@@ -1,0 +1,17 @@
+# Definition template — copy to <lesson>/defs/<slug>.yaml
+id: ""
+term: "Term Name"
+aliases:
+  - "term name"
+  - "term names"
+tags: []
+
+definition: |
+  Clear explanation of the term.
+
+example: |
+  ```
+  Optional example.
+  ```
+
+related: []
