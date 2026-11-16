@@ -1,4 +1,4 @@
-# Templates 
+# Templates
 
 Ready-to-copy skeletons for everything you'll create in your course.
 The platform **ignores** any folder starting with `_`, so files here
